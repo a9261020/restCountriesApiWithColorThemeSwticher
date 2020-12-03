@@ -1,15 +1,16 @@
 // https://sass-guidelin.es/
 // helpers folder instead of abstract
 
-@import "./helpers/variables";
-@import "./helpers/function";
-@import "./helpers/mixins";
+@import 
+    "./helpers/variables",
+    "./helpers/function",
+    "./helpers/mixins";
 
-// vender
 @import "./vendors/normalize";
 
-@import "./base/reset";
-@import "./base/typography";
+@import 
+    "./base/reset",
+    "./base/typography";
 
 @import "./layout/header";
 
@@ -17,5 +18,6 @@
 
 @import "./pages/home";
  
-@import "./themes/default";
-@import "./themes/dark";
+@import 
+    "./themes/default",
+    "./themes/dark";
