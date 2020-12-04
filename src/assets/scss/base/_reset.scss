@@ -1,5 +1,24 @@
 * {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	box-sizing: border-box;
+
+	&::after,
+	&::before {
+		box-sizing: border-box;
+	}
+}
+
+select,
+button,
+input,
+a {
+	&:focus {
+		outline: none;
+	}
+}
+
+a {
+	text-decoration: none;
 }

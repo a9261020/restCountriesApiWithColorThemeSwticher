@@ -2,22 +2,32 @@
 // helpers folder instead of abstract
 
 @import 
-    "./helpers/variables",
-    "./helpers/function",
+    "./helpers/variables", 
+    "./helpers/function", 
+    "./helpers/extends", 
     "./helpers/mixins";
 
-@import "./vendors/normalize";
+@import 
+    "./vendors/normalize";
 
 @import 
-    "./base/reset",
+    "./base/reset", 
     "./base/typography";
 
-@import "./layout/header";
+@import
+    "./layout/container",
+    "./layout/inputGroup",
+    "./layout/app";
 
 // components
-
-@import "./pages/home";
- 
 @import 
-    "./themes/default",
-    "./themes/dark";
+    "./components/header",
+    "./components/filter",
+    "./components/searchInput";
+
+@import 
+    "./pages/home";
+
+@import 
+    "./themes/dark", 
+    "./themes/light";

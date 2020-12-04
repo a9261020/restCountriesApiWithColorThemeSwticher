@@ -1,8 +1,20 @@
 <template>
-  <h1>App.vue</h1>
+    <Header />
+    <Container />
 </template>
 
-<script setup>
+<script>
+import { defineAsyncComponent } from "vue";
+
+const components = {
+    Header: defineAsyncComponent(() => import("@/components/Header.vue")),
+    Container: defineAsyncComponent(() => import("@/layout/Container.vue"))
+};
+
+export default {
+    name: "App",
+    components,
+};
 </script>
 
 <style lang="scss">
