@@ -1,0 +1,23 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+    align-items: baseline;
+    padding: 20px;
+	background-color: var(--primary);
+    color: var(--text-color);
+    h1 {
+        font-size: 1rem;
+    }
+}
+
+.theme {
+	&-switch {
+		border: none;
+		background-color: transparent;
+        color: var(--text-color);
+        cursor: pointer;
+		&:focus {
+			outline: none;
+		}
+	}
+}
