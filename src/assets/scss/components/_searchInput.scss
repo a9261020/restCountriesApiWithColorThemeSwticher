@@ -1,0 +1,20 @@
+.searchInput {
+	display: flex;
+    margin-bottom: 30px;
+	padding: 20px 30px;
+	@extend %componentWrapper;
+
+	&-icon {
+        margin-right: 30px;
+	}
+
+	&-input {
+        flex: 1;
+		border: none;
+		background-color: var(--primary);
+        color: var(--text-color);
+        &::placeholder {
+            color: var(--placeholder-color);
+        }
+	}
+}

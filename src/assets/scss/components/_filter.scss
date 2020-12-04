@@ -1,0 +1,30 @@
+.filter {
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+    width: 60%;
+    padding: 20px;
+    @extend %componentWrapper;
+    
+	&-select {
+		flex: 1;
+	}
+
+	&-icon {
+		flex-shrink: 0;
+	}
+
+	&-options {
+        position: absolute;
+        top: calc(100% + 10px);
+        width: 100%;
+        padding: 20px;
+        @extend %componentWrapper;
+
+        li {
+            display: block;
+            padding: 5px 0;
+        }
+	}
+}
