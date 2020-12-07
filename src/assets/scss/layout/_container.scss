@@ -1,3 +1,17 @@
 .container {
     padding: 20px 10px;
 }
+
+.inputGroup {
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 30px;
+}
+
+.cardsGroup {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 87%;
+    margin: auto;
+}

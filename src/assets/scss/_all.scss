@@ -16,11 +16,10 @@
 
 @import
     "./layout/container",
-    "./layout/inputGroup",
     "./layout/app";
 
-// components
 @import 
+    "./components/card",
     "./components/header",
     "./components/filter",
     "./components/searchInput";

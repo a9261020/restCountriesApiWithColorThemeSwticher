@@ -1,10 +1,9 @@
 .header {
 	display: flex;
 	justify-content: space-between;
-    align-items: baseline;
+	align-items: baseline;
+	@extend %componentWrapper;
     padding: 20px;
-	background-color: var(--primary);
-    color: var(--text-color);
     h1 {
         font-size: 1rem;
     }

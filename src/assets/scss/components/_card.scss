@@ -1,0 +1,20 @@
+.card {
+    @extend %componentWrapper;
+    ~ .card {
+        margin-top: 20px;        
+    }
+    img {
+        width: 100%;
+        border-radius: $border-radius $border-radius 0 0;
+    }
+    &-info {
+        padding: 30px 30px 50px;
+        text-align: left;
+        &-title {
+            margin-bottom: 20px;
+            & ~ * {
+                margin: 10px 0;
+            }
+        }        
+    }
+}

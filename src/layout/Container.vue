@@ -4,7 +4,11 @@
             <search-input />
             <Filter />
         </div>
-        <div class="cards">cards</div>
+        <div class="cardsGroup">
+            <Card />
+            <Card />
+            <Card />
+        </div>
     </div>
 </template>
 
@@ -16,6 +20,7 @@ const components = {
         import("@/components/SearchInput.vue")
     ),
     Filter: defineAsyncComponent(() => import("@/components/Filter.vue")),
+    Card: defineAsyncComponent(() => import("@/components/Card.vue")),
 };
 
 export default {
