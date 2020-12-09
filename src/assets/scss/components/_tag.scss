@@ -1,0 +1,6 @@
+.tag {
+    display: inline-block;
+    @extend %componentWrapper; 
+    margin-bottom: 30px;
+    padding: 10px 20px;
+}

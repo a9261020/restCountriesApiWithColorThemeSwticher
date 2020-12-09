@@ -1,0 +1,20 @@
+.detail {
+    .card {
+        background-color: transparent;
+        box-shadow: none;
+        &-info {
+            padding: 30px 30px 50px 0px;
+        }
+    }
+    .border {
+        color: var(--text-color);
+        &-list {
+            display: flex;
+            justify-content: space-between;
+        }
+        .tag {
+            margin-bottom: 0;
+            padding: 10px 15px;
+        }
+    }
+}

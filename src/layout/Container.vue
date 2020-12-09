@@ -1,6 +1,7 @@
 <template>
     <div class="container">
-        <Home />
+        <Home v-show="true" />
+        <Detail />
     </div>
 </template>
 
@@ -9,6 +10,7 @@ import { defineAsyncComponent } from "vue";
 
 const components = {
     Home: defineAsyncComponent(() => import("@/layout/Home.vue")),
+    Detail: defineAsyncComponent(() => import("@/layout/Detail.vue")),
 };
 
 export default {
