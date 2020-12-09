@@ -16,12 +16,14 @@
 
 @import
     "./layout/container",
+    "./layout/detail",
     "./layout/app";
 
 @import 
     "./components/card",
     "./components/header",
     "./components/filter",
+    "./components/tag",
     "./components/searchInput";
 
 @import 
