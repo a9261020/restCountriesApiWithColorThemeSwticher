@@ -1,5 +1,8 @@
 <template>
     <div class="tag">
-        <slot>箭頭 Back</slot>
+        <slot>
+            <span class="icon-arrow-left2"></span>
+            Back</slot
+        >
     </div>
 </template>

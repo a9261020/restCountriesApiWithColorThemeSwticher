@@ -2,7 +2,7 @@
     <header class="header">
         <h1 class="header-title">Where in the world</h1>
         <div class="theme" @click="changeTheme">
-            <i class="theme-icon"></i>
+            <span class="theme-icon icon-moon-o"></span>
             <button class="theme-switch">Dark Mode</button>
         </div>
     </header>
