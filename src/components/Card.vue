@@ -1,14 +1,14 @@
 <template>
     <div class="card">
         <div class="card-img">
-            <img src="https://fakeimg.pl/300" alt="" />
+            <img :src="home?.flag" alt="" />
         </div>
         <div class="card-item">
-            <h2 class="card-item-title">Germany</h2>
-            <p>Population:1234</p>
-            <p>Region:Europe</p>
-            <p>Capital:berlin</p>
-            <div class="border">
+            <h2 class="card-item-title">{{ home?.name }}</h2>
+            <p>Population: {{ home?.population }}</p>
+            <p>Region: {{ home?.region }}</p>
+            <p>Capital: {{ home?.capital }}</p>
+            <div class="border" v-show="isDetail">
                 <h3>Border Countries</h3>
                 <div class="border-list">
                     <Tag>France</Tag>
@@ -29,6 +29,12 @@ const components = {
 
 export default {
     components,
+    props: {
+        home: {
+            type: Object,
+        },
+        isDetail: Boolean,
+    },
 };
 </script>
 

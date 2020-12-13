@@ -1,8 +1,12 @@
 <template>
     <div class="cardsGroup">
-        <Card />
-        <Card />
-        <Card />
+        <Card
+            @click="sayHi"
+            v-for="home in homeComputed"
+            :home="home"
+            :isDetail="isDetail"
+            :key="home.capital"
+        />
     </div>
 </template>
 
@@ -15,5 +19,17 @@ const components = {
 
 export default {
     components,
+    props: {
+        homeComputed: Array,
+        isDetail: Boolean,
+    },
+    setup() {
+        const sayHi = () => {
+            console.log("Hello");
+        };
+        return {
+            sayHi,
+        };
+    },
 };
 </script>
