@@ -2,14 +2,6 @@
     <div class="detail">
         <Tag />
         <Card />
-        <div class="border">
-            <h3>Border Countries</h3>
-            <div class="border-list">
-                <Tag>France</Tag>
-                <Tag>Germany</Tag>
-                <Tag>Netherlands</Tag>
-            </div>
-        </div>
     </div>
 </template>
 
