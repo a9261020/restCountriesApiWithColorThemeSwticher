@@ -1,12 +1,6 @@
 <template>
     <div class="container">
-        <Home
-            v-show="!state.isDetail"
-            :homeComputed="homeComputed"
-            :isDetail="state.isDetail"
-            :isDetailHandler="isDetailHandler"
-        />
-        <Detail v-show="state.isDetail" />
+        <router-view />
     </div>
 </template>
 
@@ -26,15 +20,11 @@ export default {
             countries: [],
             home: [],
             detail: [],
-            isDetail: false,
         });
 
         const countiresAPI = "DEU;USA;BRA;ISL;AFG;ALA;ALB;DZA";
         const url = `https://restcountries.eu/rest/v2/alpha?codes=${countiresAPI}`;
         axios.get(url).then((res) => (state.value.countries = res.data));
-
-        const isDetailHandler = () =>
-            (state.value.isDetail = !state.value.isDetail);
 
         const homeComputed = computed(() =>
             state.value?.countries.map((country) => {
@@ -53,7 +43,6 @@ export default {
         return {
             state,
             homeComputed,
-            isDetailHandler,
         };
     },
 };

@@ -1,11 +1,10 @@
 <template>
     <div class="cardsGroup">
         <Card
-            v-for="home in homeComputed"
-            :home="home"
+            v-for="country in countryList"
+            :country="country"
             :isDetail="isDetail"
-            :key="home.capital"
-            @click="isDetailHandler"
+            :key="country.capital"
         />
     </div>
 </template>
@@ -20,14 +19,8 @@ const components = {
 export default {
     components,
     props: {
-        homeComputed: Array,
+        countryList: Array,
         isDetail: Boolean,
-    },
-    setup(props, { attrs }) {
-        const isDetailHandler = () => attrs.onIsDetailHandler();
-        return {
-            isDetailHandler,
-        };
     },
 };
 </script>

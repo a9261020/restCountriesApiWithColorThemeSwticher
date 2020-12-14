@@ -1,16 +1,13 @@
 <template>
     <div class="home">
         <input-group />
-        <cards-group
-            :homeComputed="homeComputed"
-            :isDetail="isDetail"
-            @isDetailHandler="isDetailHandler"
-        />
+        <cards-group :countryList="state.countryList" :isDetail="false" />
     </div>
 </template>
 
 <script>
-import { defineAsyncComponent } from "vue";
+import { defineAsyncComponent, ref } from "vue";
+import axios from "axios";
 
 const components = {
     "input-group": defineAsyncComponent(() =>
@@ -24,10 +21,34 @@ const components = {
 export default {
     inheritAttrs: false,
     props: {
-        homeComputed: Array,
         isDetail: Boolean,
-        isDetailHandler: Function,
     },
     components,
+    setup() {
+        const state = ref({
+            countryList: [],
+        });
+
+        const countiresAPI = "DEU;USA;BRA;ISL;AFG;ALA;ALB;DZA";
+        const url = `https://restcountries.eu/rest/v2/alpha?codes=${countiresAPI}`;
+        axios.get(url).then(
+            (res) =>
+                (state.value.countryList = res.data.map((country) => {
+                    const newCountryList = {
+                        name: country?.name,
+                        flag: country?.flag,
+                        population: country?.population,
+                        region: country?.region,
+                        capital: country?.capital,
+                        alpha3Code: country?.alpha3Code,
+                    };
+                    return newCountryList;
+                }))
+        );
+
+        return {
+            state,
+        };
+    },
 };
 </script>

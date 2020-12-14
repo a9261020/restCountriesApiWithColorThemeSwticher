@@ -1,11 +1,9 @@
 <template>
-    <div class="container">
-        <div class="detail">
-            <router-link to="/">
-                <Tag />
-            </router-link>
-            <Card :home="state?.home" :isDetail="true" />
-        </div>
+    <div class="detail">
+        <router-link to="/">
+            <Tag />
+        </router-link>
+        <Card :country="state?.country" :isDetail="true" />
     </div>
 </template>
 
@@ -24,14 +22,12 @@ export default {
     setup() {
         const route = useRoute();
         const state = ref({
-            home: {},
+            country: {},
         });
         const alpha3Code = route.params.alpha3Code;
         const url = `https://restcountries.eu/rest/v2/alpha/${alpha3Code}`;
-        axios.get(url).then((res) => {
-            state.value.home = res.data;
-            console.log(res.data);
-        });
+        axios.get(url).then((res) => (state.value.country = res.data));
+        
         return {
             state,
         };

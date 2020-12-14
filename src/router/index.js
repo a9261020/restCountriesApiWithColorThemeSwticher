@@ -6,15 +6,23 @@ const routes = [
     path: "/",
     name: "Container",
     component: Container,
+    children: [
+      {
+        path: "/",
+        name: "Home",
+        component: () => import(/* webpackChunkName: "Home" */ "../layout/Home.vue")
+      },
+      {
+        path: "/detail/:alpha3Code",
+        name: "Detail",
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "Detail" */ "../layout/Detail.vue")
+      }
+
+    ]
   },
-  {
-    path: "/detail/:alpha3Code",
-    name: "Detail",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ "../layout/Detail.vue")
-  }
 ]
 
 const router = createRouter({
