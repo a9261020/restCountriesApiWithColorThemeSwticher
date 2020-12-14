@@ -1,12 +1,12 @@
 <template>
     <div class="container">
-        {{state.isDetail}}
         <Home
-            v-show="true"
+            v-show="!state.isDetail"
             :homeComputed="homeComputed"
-            v-model:isDetail="state.isDetail"
+            :isDetail="state.isDetail"
+            :isDetailHandler="isDetailHandler"
         />
-        <Detail v-show="false" />
+        <Detail v-show="state.isDetail" />
     </div>
 </template>
 
@@ -30,6 +30,9 @@ export default {
             isDetail: false,
         });
 
+        const isDetailHandler = () =>
+            (state.value.isDetail = !state.value.isDetail);
+
         const homeComputed = computed(() =>
             props?.countries.map((country) => {
                 const homeObj = {
@@ -46,6 +49,7 @@ export default {
         return {
             state,
             homeComputed,
+            isDetailHandler,
         };
     },
 };

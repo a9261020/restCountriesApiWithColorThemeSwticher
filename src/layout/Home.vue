@@ -1,7 +1,11 @@
 <template>
     <div class="home">
         <input-group />
-        <cards-group :homeComputed="homeComputed" :isDetail="isDetail" />
+        <cards-group
+            :homeComputed="homeComputed"
+            :isDetail="isDetail"
+            @isDetailHandler="isDetailHandler"
+        />
     </div>
 </template>
 
@@ -18,9 +22,11 @@ const components = {
 };
 
 export default {
+    inheritAttrs: false,
     props: {
         homeComputed: Array,
         isDetail: Boolean,
+        isDetailHandler: Function,
     },
     components,
 };

@@ -1,11 +1,11 @@
 <template>
     <div class="cardsGroup">
         <Card
-            @click="sayHi"
             v-for="home in homeComputed"
             :home="home"
             :isDetail="isDetail"
             :key="home.capital"
+            @click="isDetailHandler"
         />
     </div>
 </template>
@@ -23,12 +23,10 @@ export default {
         homeComputed: Array,
         isDetail: Boolean,
     },
-    setup() {
-        const sayHi = () => {
-            console.log("Hello");
-        };
+    setup(props, { attrs }) {
+        const isDetailHandler = () => attrs.onIsDetailHandler();
         return {
-            sayHi,
+            isDetailHandler,
         };
     },
 };
