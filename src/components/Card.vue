@@ -1,22 +1,24 @@
 <template>
     <div class="card">
-        <div class="card-img">
-            <img :src="home?.flag" alt="" />
-        </div>
-        <div class="card-item">
-            <h2 class="card-item-title">{{ home?.name }}</h2>
-            <p>Population: {{ home?.population }}</p>
-            <p>Region: {{ home?.region }}</p>
-            <p>Capital: {{ home?.capital }}</p>
-            <div class="border" v-show="isDetail">
-                <h3>Border Countries</h3>
-                <div class="border-list">
-                    <Tag>France</Tag>
-                    <Tag>Germany</Tag>
-                    <Tag>Netherlands</Tag>
+        <router-link :to="`/detail/${home?.alpha3Code}`">
+            <div class="card-img">
+                <img :src="home?.flag" alt="" />
+            </div>
+            <div class="card-item">
+                <h2 class="card-item-title">{{ home?.name }}</h2>
+                <p>Population: {{ home?.population }}</p>
+                <p>Region: {{ home?.region }}</p>
+                <p>Capital: {{ home?.capital }}</p>
+                <div class="border" v-show="isDetail">
+                    <h3>Border Countries</h3>
+                    <div class="border-list">
+                        <Tag>France</Tag>
+                        <Tag>Germany</Tag>
+                        <Tag>Netherlands</Tag>
+                    </div>
                 </div>
             </div>
-        </div>
+        </router-link>
     </div>
 </template>
 

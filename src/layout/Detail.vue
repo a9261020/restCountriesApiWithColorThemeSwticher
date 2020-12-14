@@ -1,12 +1,18 @@
 <template>
-    <div class="detail">
-        <Tag />
-        <Card />
+    <div class="container">
+        <div class="detail">
+            <router-link to="/">
+                <Tag />
+            </router-link>
+            <Card :home="state?.home" :isDetail="true" />
+        </div>
     </div>
 </template>
 
 <script>
-import { defineAsyncComponent } from "vue";
+import { defineAsyncComponent, ref } from "vue";
+import { useRoute } from "vue-router";
+import axios from "axios";
 
 const components = {
     Tag: defineAsyncComponent(() => import("@/components/Tag.vue")),
@@ -15,6 +21,21 @@ const components = {
 
 export default {
     components,
+    setup() {
+        const route = useRoute();
+        const state = ref({
+            home: {},
+        });
+        const alpha3Code = route.params.alpha3Code;
+        const url = `https://restcountries.eu/rest/v2/alpha/${alpha3Code}`;
+        axios.get(url).then((res) => {
+            state.value.home = res.data;
+            console.log(res.data);
+        });
+        return {
+            state,
+        };
+    },
 };
 </script>
 

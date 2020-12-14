@@ -12,6 +12,7 @@
 
 <script>
 import { defineAsyncComponent, ref, computed } from "vue";
+import axios from "axios";
 
 const components = {
     Home: defineAsyncComponent(() => import("@/layout/Home.vue")),
@@ -19,28 +20,31 @@ const components = {
 };
 
 export default {
-    props: {
-        countries: Array,
-    },
     components,
-    setup(props) {
+    setup() {
         const state = ref({
+            countries: [],
             home: [],
             detail: [],
             isDetail: false,
         });
 
+        const countiresAPI = "DEU;USA;BRA;ISL;AFG;ALA;ALB;DZA";
+        const url = `https://restcountries.eu/rest/v2/alpha?codes=${countiresAPI}`;
+        axios.get(url).then((res) => (state.value.countries = res.data));
+
         const isDetailHandler = () =>
             (state.value.isDetail = !state.value.isDetail);
 
         const homeComputed = computed(() =>
-            props?.countries.map((country) => {
+            state.value?.countries.map((country) => {
                 const homeObj = {
                     name: country?.name,
                     flag: country?.flag,
                     population: country?.population,
                     region: country?.region,
                     capital: country?.capital,
+                    alpha3Code: country?.alpha3Code,
                 };
                 return homeObj;
             })
