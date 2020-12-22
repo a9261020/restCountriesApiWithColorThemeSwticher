@@ -1,12 +1,16 @@
 <template>
     <div class="home">
-        <input-group />
-        <cards-group :countryList="state.countryList" :isDetail="false" />
+        <input-group
+            :countryList="state.countryList"
+            :filterByRegion="filterByRegion"
+            :filterByName="filterByName"
+        />
+        <cards-group :countryListComputed="state.countryListComputed" :isDetail="false" />
     </div>
 </template>
 
 <script>
-import { defineAsyncComponent, ref } from "vue";
+import { defineAsyncComponent, ref, computed } from "vue";
 import axios from "axios";
 
 const components = {
@@ -27,7 +31,22 @@ export default {
     setup() {
         const state = ref({
             countryList: [],
+            countryListComputed: computed(() => {
+                if(state.value.filterName) {
+                    return state.value.countryList.filter(item => item.name.indexOf(state.value.filterName) !== -1);
+                }
+                return state.value.countryList
+            }),
+            filterName:""
         });
+
+        const filterByName = (value) => {
+            state.value.filterName = value
+        };
+
+        const filterByRegion = () => {
+            console.log("filterByRegion");
+        };
 
         const countiresAPI = "DEU;USA;BRA;ISL;AFG;ALA;ALB;DZA";
         const url = `https://restcountries.eu/rest/v2/alpha?codes=${countiresAPI}`;
@@ -48,6 +67,8 @@ export default {
 
         return {
             state,
+            filterByRegion,
+            filterByName,
         };
     },
 };

@@ -1,7 +1,7 @@
 <template>
     <div class="cardsGroup">
         <Card
-            v-for="country in countryList"
+            v-for="country in countryListComputed"
             :country="country"
             :isDetail="isDetail"
             :key="country.capital"
@@ -19,7 +19,7 @@ const components = {
 export default {
     components,
     props: {
-        countryList: Array,
+        countryListComputed: Array,
         isDetail: Boolean,
     },
 };

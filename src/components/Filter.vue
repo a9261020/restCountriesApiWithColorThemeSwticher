@@ -8,5 +8,19 @@
             <li>3</li>
             <li>4</li>
         </ul>
+        <button type="button" @click="$attrs?.filterByRegion()">clickMe</button>
     </div>
 </template>
+
+<script>
+export default {
+    setup(props, { attrs }) {
+        const test = () => {
+            attrs.filterByRegion();
+        };
+        return {
+            test,
+        };
+    },
+};
+</script>
