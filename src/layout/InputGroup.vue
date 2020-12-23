@@ -1,7 +1,7 @@
 <template>
     <div class="inputGroup">
-        <search-input v-bind="$attrs"/>
-        <Filter v-bind="$attrs" />
+        <search-input v-bind="$attrs" />
+        <Filter v-bind="$attrs" :countryListComputed="countryListComputed"/>
     </div>
 </template>
 
@@ -17,5 +17,8 @@ const components = {
 
 export default {
     components,
+    props: {
+        countryListComputed: Array,
+    },
 };
 </script>

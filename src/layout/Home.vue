@@ -1,16 +1,19 @@
 <template>
     <div class="home">
         <input-group
-            :countryList="state.countryList"
+            :countryListComputed="state.countryListComputed"
             :filterByRegion="filterByRegion"
             :filterByName="filterByName"
         />
-        <cards-group :countryListComputed="state.countryListComputed" :isDetail="false" />
+        <cards-group
+            :countryListComputed="state.countryListComputed"
+            :isDetail="false"
+        />
     </div>
 </template>
 
 <script>
-import { defineAsyncComponent, ref, computed } from "vue";
+import { defineAsyncComponent, reactive, computed } from "vue";
 import axios from "axios";
 
 const components = {
@@ -29,30 +32,38 @@ export default {
     },
     components,
     setup() {
-        const state = ref({
+        const state = reactive({
             countryList: [],
             countryListComputed: computed(() => {
-                if(state.value.filterName) {
-                    return state.value.countryList.filter(item => item.name.indexOf(state.value.filterName) !== -1);
+                if (state.filterName) {
+                    return state.countryList.filter(
+                        (item) => item.name.indexOf(state.filterName) !== -1
+                    );
                 }
-                return state.value.countryList
+                if (state.filterRegion !== "all") {
+                    return state.countryList.filter(
+                        (item) => item.region.indexOf(state.filterRegion) !== -1
+                    );
+                }
+                return state.countryList;
             }),
-            filterName:""
+            filterName: "",
+            filterRegion: "",
         });
 
         const filterByName = (value) => {
-            state.value.filterName = value
+            state.filterName = value;
         };
 
-        const filterByRegion = () => {
-            console.log("filterByRegion");
+        const filterByRegion = (region) => {
+            state.filterRegion = region;
         };
 
         const countiresAPI = "DEU;USA;BRA;ISL;AFG;ALA;ALB;DZA";
         const url = `https://restcountries.eu/rest/v2/alpha?codes=${countiresAPI}`;
         axios.get(url).then(
             (res) =>
-                (state.value.countryList = res.data.map((country) => {
+                (state.countryList = res.data.map((country) => {
                     const newCountryList = {
                         name: country?.name,
                         flag: country?.flag,

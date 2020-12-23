@@ -9,17 +9,21 @@
             placeholder="Search for a country..."
             aria-label="Search for a country"
             type="text"
-            @input="test"
+            @input="filtByName"
         />
     </div>
 </template>
 
 <script>
 export default {
-    methods:{
-        test(e){
-            this.$attrs?.filterByName(e.target.value);
+    setup(props, { attrs }) {
+        const filtByName = (e) => {
+            attrs.filterByName(e.target.value);
         }
-    }
-}
+
+        return {
+            filtByName
+        }
+    },
+};
 </script>
