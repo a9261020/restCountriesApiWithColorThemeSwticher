@@ -1,15 +1,22 @@
 <template>
-    <div class="home">
-        <input-group
-            :countryListComputed="state.countryListComputed"
-            :filterByRegion="filterByRegion"
-            :filterByName="filterByName"
-        />
-        <cards-group
-            :countryListComputed="state.countryListComputed"
-            :isDetail="false"
-        />
-    </div>
+    <Suspense>
+        <template #default>
+            <div class="home">
+                <input-group
+                    :countryListComputed="state.countryListComputed"
+                    :filterByRegion="filterByRegion"
+                    :filterByName="filterByName"
+                />
+                <cards-group
+                    :countryListComputed="state.countryListComputed"
+                    :isDetail="false"
+                />
+            </div>
+        </template>
+        <template #fallback>
+            <Loading />
+        </template>
+    </Suspense>
 </template>
 
 <script>
@@ -23,6 +30,7 @@ const components = {
     "cards-group": defineAsyncComponent(() =>
         import("@/layout/CardsGroup.vue")
     ),
+    Loading: defineAsyncComponent(() => import("@/components/Loading.vue")),
 };
 
 export default {

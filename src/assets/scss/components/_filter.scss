@@ -13,6 +13,10 @@
         margin-left: auto;
     }
 
+    &:focus{
+        outline: none;
+    }
+
 	&-select {
 		flex: 1;
 	}

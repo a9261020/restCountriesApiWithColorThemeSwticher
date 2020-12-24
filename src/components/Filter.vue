@@ -1,5 +1,5 @@
 <template>
-    <div class="filter" @click="isClickHandler">
+    <div class="filter" @click="isClickHandler" tabindex="1" @blur="blurSome">
         <div class="filter-select">Filter by Region</div>
         <span class="icon-chevron-down"></span>
         <ul class="filter-options" v-show="state.isClick">
@@ -33,7 +33,8 @@ export default {
             isClick: false,
         });
 
-        const isClickHandler = () => {
+        const isClickHandler = (e) => {
+            e.target.focus();
             state.isClick = !state.isClick;
         };
 
@@ -41,10 +42,15 @@ export default {
             attrs.filterByRegion(region);
         };
 
+        const blurSome = () => {
+            state.isClick = false;
+        };
+
         return {
             state,
             filtByRegion,
             isClickHandler,
+            blurSome,
         };
     },
 };

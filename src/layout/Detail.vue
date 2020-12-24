@@ -1,10 +1,17 @@
 <template>
-    <div class="detail">
-        <router-link to="/">
-            <Tag />
-        </router-link>
-        <Card :country="state?.country" :isDetail="true" />
-    </div>
+    <Suspense>
+        <template #default>
+            <div class="detail">
+                <router-link to="/">
+                    <Tag />
+                </router-link>
+                <Card :country="state?.country" :isDetail="true" />
+            </div>
+        </template>
+        <template #fallback>
+            <Loading />
+        </template>
+    </Suspense>
 </template>
 
 <script>
@@ -15,6 +22,7 @@ import axios from "axios";
 const components = {
     Tag: defineAsyncComponent(() => import("@/components/Tag.vue")),
     Card: defineAsyncComponent(() => import("@/components/Card.vue")),
+    Loading: defineAsyncComponent(() => import("@/components/Loading.vue")),
 };
 
 export default {
@@ -27,7 +35,7 @@ export default {
         const alpha3Code = route.params.alpha3Code;
         const url = `https://restcountries.eu/rest/v2/alpha/${alpha3Code}`;
         axios.get(url).then((res) => (state.value.country = res.data));
-        
+
         return {
             state,
         };

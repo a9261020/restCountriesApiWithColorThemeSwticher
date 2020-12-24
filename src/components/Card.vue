@@ -2,7 +2,7 @@
     <div class="card" v-if="!isDetail">
         <router-link :to="`/detail/${country?.alpha3Code}`">
             <div class="card-img">
-                <img :src="country?.flag" alt="" />
+                <img :src="country?.flag" alt="country flag" />
             </div>
             <div class="card-item">
                 <h2 class="card-item-title">{{ country?.name }}</h2>
@@ -21,7 +21,7 @@
 
     <div class="card" v-else>
         <div class="card-img">
-            <img :src="state?.country?.flag" alt="" />
+            <img :src="state?.country?.flag" alt="country flag" />
         </div>
         <div class="card-item">
             <h2 class="card-item-title">{{ state?.country?.name }}</h2>
