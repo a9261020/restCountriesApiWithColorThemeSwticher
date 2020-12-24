@@ -1,5 +1,5 @@
 <template>
-    <div class="card" v-show="!isDetail">
+    <div class="card" v-if="!isDetail">
         <router-link :to="`/detail/${country?.alpha3Code}`">
             <div class="card-img">
                 <img :src="country?.flag" alt="" />
@@ -19,7 +19,7 @@
         </router-link>
     </div>
 
-    <div class="card" v-show="isDetail">
+    <div class="card" v-else>
         <div class="card-img">
             <img :src="state?.country?.flag" alt="" />
         </div>

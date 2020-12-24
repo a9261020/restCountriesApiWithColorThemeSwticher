@@ -40,7 +40,7 @@ export default {
         const filtByRegion = (region = "all") => {
             attrs.filterByRegion(region);
         };
-        
+
         return {
             state,
             filtByRegion,

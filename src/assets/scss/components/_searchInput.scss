@@ -3,7 +3,11 @@
     margin-bottom: 30px;
 	padding: 20px 30px;
 	@extend %componentWrapper;
-    color: var(--placeholder-color);
+	color: var(--placeholder-color);
+	@include breakpoint(md) {
+		width: 35%;
+		margin-bottom: 0;
+	}
 
 	&-icon {
         margin-right: 30px;

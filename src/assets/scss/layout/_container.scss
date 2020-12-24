@@ -6,6 +6,9 @@
     display: flex;
     flex-flow: column;
     margin-bottom: 30px;
+    @include breakpoint(md) {
+        flex-flow: row;
+    }
 }
 
 .cardsGroup {
@@ -14,4 +17,9 @@
     justify-content: center;
     width: 87%;
     margin: auto;
+    @include breakpoint(md) {
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        width: 100%;
+    }
 }

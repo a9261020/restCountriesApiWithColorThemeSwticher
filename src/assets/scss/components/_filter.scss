@@ -8,6 +8,11 @@
     @extend %componentWrapper;
     cursor: pointer;
 
+    @include breakpoint(md) {
+        width: 18.75rem;
+        margin-left: auto;
+    }
+
 	&-select {
 		flex: 1;
 	}

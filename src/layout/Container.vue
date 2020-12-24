@@ -5,16 +5,10 @@
 </template>
 
 <script>
-import { defineAsyncComponent, ref, computed } from "vue";
+import { ref, computed } from "vue";
 import axios from "axios";
 
-const components = {
-    Home: defineAsyncComponent(() => import("@/layout/Home.vue")),
-    Detail: defineAsyncComponent(() => import("@/layout/Detail.vue")),
-};
-
 export default {
-    components,
     setup() {
         const state = ref({
             countries: [],
